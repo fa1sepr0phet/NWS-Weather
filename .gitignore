@@ -1,6 +1,7 @@
 # General
 *.iml
 .gradle/
+.idea/
 .kotlin/
 *.class
 *.log
