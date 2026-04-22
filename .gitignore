@@ -1,5 +1,20 @@
+# General
 *.iml
 .gradle/
+.kotlin/
+*.class
+*.log
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+replay_pid*
+
+# Android/Studio
 **/local.properties
 /local.properties
 /.idea/caches
