@@ -29,15 +29,6 @@ Many modern weather platforms rely on ads, subscriptions, and user tracking. Thi
 
 **Just weather.**
 
-## Philosophy on Usage
-
-This project exists to keep weather information free and accessible.
-
-While the GPL license allows commercial use, any modifications must remain open-source.
-
-If you use this project, please respect its intent:
-- avoid adding ads or tracking
-- avoid restricting access behind paywalls
 ---
 
 ##  Features
@@ -114,3 +105,13 @@ This means:
 - This project cannot be incorporated into closed-source software  
 
 See the LICENSE file for full details.
+
+## Philosophy on Usage
+
+This project exists to keep weather information free and accessible.
+
+While the GPL license allows commercial use, any modifications must remain open-source.
+
+If you use this project, please respect its intent:
+- avoid adding ads or tracking
+- avoid restricting access behind paywalls
