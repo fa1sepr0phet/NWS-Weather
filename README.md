@@ -29,6 +29,18 @@ Many modern weather platforms rely on ads, subscriptions, and user tracking. Thi
 
 **Just weather.**
 
+## Philosophy on Usage
+
+This project is released under the MIT License to encourage openness and collaboration.
+
+However, the intent of this project is to keep weather information free, accessible, and free from monetization.
+
+If you use this code, please respect that spirit:
+- avoid adding ads or tracking
+- avoid restricting access behind paywalls
+
+This is not a legal requirement, but a request to preserve the purpose of the project.
+
 ---
 
 ##  Features
