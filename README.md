@@ -15,18 +15,6 @@ The goal is straightforward:
 
 ---
 
-##  License
-
-This project is licensed under the GNU General Public License v3.0 (GPLv3).
-
-This means:
-
-- You are free to use, modify, and distribute this software  
-- Any distributed modifications must also be open-source  
-- This project cannot be incorporated into closed-source software  
-
-See the LICENSE file for full details.
-
 ##  Philosophy
 
 Weather is public information.
@@ -114,3 +102,15 @@ No user data is sent to third-party tracking or analytics services.
 ```bash
 git clone https://github.com/fa1sepr0phet/NWS-Weather.git
 cd NWS-Weather
+
+##  License
+
+This project is licensed under the GNU General Public License v3.0 (GPLv3).
+
+This means:
+
+- You are free to use, modify, and distribute this software  
+- Any distributed modifications must also be open-source  
+- This project cannot be incorporated into closed-source software  
+
+See the LICENSE file for full details.
