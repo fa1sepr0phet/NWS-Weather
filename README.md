@@ -15,6 +15,18 @@ The goal is straightforward:
 
 ---
 
+##  License
+
+This project is licensed under the GNU General Public License v3.0 (GPLv3).
+
+This means:
+
+- You are free to use, modify, and distribute this software  
+- Any distributed modifications must also be open-source  
+- This project cannot be incorporated into closed-source software  
+
+See the LICENSE file for full details.
+
 ##  Philosophy
 
 Weather is public information.
@@ -31,16 +43,13 @@ Many modern weather platforms rely on ads, subscriptions, and user tracking. Thi
 
 ## Philosophy on Usage
 
-This project is released under the GPLv3 License to encourage openness and collaboration.
+This project exists to keep weather information free and accessible.
 
-However, the intent of this project is to keep weather information free, accessible, and free from monetization.
+While the GPL license allows commercial use, any modifications must remain open-source.
 
-If you use this code, please respect that spirit:
+If you use this project, please respect its intent:
 - avoid adding ads or tracking
 - avoid restricting access behind paywalls
-
-This is not a legal requirement, but a request to preserve the purpose of the project.
-
 ---
 
 ##  Features
