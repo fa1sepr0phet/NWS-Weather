@@ -213,6 +213,12 @@ fun WeatherScreen(
                             onSaveLabelChanged = onSaveLabelChanged,
                             onUseCurrentLocation = onUseCurrentLocation,
                             onSearchAddress = onSearchAddress,
+                            hasAlerts = uiState.forecastResult?.alerts?.isNotEmpty() == true,
+                            onAlertClick = {
+                                uiState.forecastResult?.let { result ->
+                                    openNwsWebsite(result.latitude, result.longitude)
+                                }
+                            },
                             cardColor = visuals.cardColor,
                             textColor = visuals.onCardTextColor
                         )

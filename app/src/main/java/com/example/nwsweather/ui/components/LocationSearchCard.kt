@@ -1,10 +1,14 @@
 package com.example.nwsweather.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.MyLocation
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Button
@@ -29,6 +33,8 @@ fun LocationSearchCard(
     onSaveLabelChanged: (String) -> Unit,
     onUseCurrentLocation: () -> Unit,
     onSearchAddress: () -> Unit,
+    onAlertClick: () -> Unit = {},
+    hasAlerts: Boolean = false,
     cardColor: Color = Color.White.copy(alpha = 0.88f),
     textColor: Color = MaterialTheme.colorScheme.onSurface
 ) {
@@ -109,6 +115,36 @@ fun LocationSearchCard(
                         text = "  Search",
                         style = MaterialTheme.typography.labelLarge
                     )
+                }
+            }
+
+            if (hasAlerts) {
+                ElevatedCard(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onAlertClick() },
+                    colors = CardDefaults.elevatedCardColors(
+                        containerColor = MaterialTheme.colorScheme.errorContainer,
+                        contentColor = MaterialTheme.colorScheme.onErrorContainer
+                    )
+                ) {
+                    Row(
+                        modifier = Modifier.padding(12.dp),
+                        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Warning,
+                            contentDescription = null,
+                            modifier = Modifier.size(24.dp),
+                            tint = MaterialTheme.colorScheme.error
+                        )
+                        Text(
+                            text = "Hazardous weather conditions reported in your area",
+                            style = MaterialTheme.typography.labelLarge,
+                            fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+                        )
+                    }
                 }
             }
         }

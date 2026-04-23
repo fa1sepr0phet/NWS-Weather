@@ -22,7 +22,7 @@ import androidx.glance.text.Text
 import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
 import com.example.nwsweather.MainActivity
-import com.example.nwsweather.R
+import com.nwsweather.myapp.R
 import com.example.nwsweather.data.local.AppDatabase
 import com.example.nwsweather.data.local.WeatherSnapshotEntity
 import kotlinx.coroutines.Dispatchers
