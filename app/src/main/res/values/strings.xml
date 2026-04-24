@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">NWS-Weather</string>
+    <string name="app_name">JustWeather</string>
     <string name="widget_description">Quick weather snapshot from your latest forecast.</string>
 </resources>
