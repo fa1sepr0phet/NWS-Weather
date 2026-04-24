@@ -91,8 +91,8 @@ No user data is sent to third-party tracking or analytics services.
 ### Steps
 
 ```bash
-git clone https://github.com/fa1sepr0phet/NWS-Weather.git
-cd NWS-Weather
+git clone https://github.com/fa1sepr0phet/JustWeather.git
+cd JustWeather
 ```
 
 ##  License
