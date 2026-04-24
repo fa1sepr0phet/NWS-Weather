@@ -24,7 +24,7 @@ abstract class AppDatabase : RoomDatabase() {
                 INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "nws-weather.db"
+                    "just-weather.db"
                 )
                     .fallbackToDestructiveMigration()
                     .build()
