@@ -15,5 +15,6 @@ data class WeatherUiState(
     val forecastResult: ForecastLoadResult? = null,
     val savedLocations: List<SavedLocationEntity> = emptyList(),
     val errorMessage: String? = null,
-    val theme: AppTheme = AppTheme.SYSTEM
+    val theme: AppTheme = AppTheme.SYSTEM,
+    val editingLocation: SavedLocationEntity? = null
 )

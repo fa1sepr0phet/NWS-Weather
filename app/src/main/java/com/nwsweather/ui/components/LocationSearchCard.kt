@@ -52,7 +52,7 @@ fun LocationSearchCard(
         colors = CardDefaults.elevatedCardColors(
             containerColor = cardColor
         ),
-        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 6.dp)
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 0.dp)
     ) {
         Column(
             modifier = Modifier.padding(16.dp),

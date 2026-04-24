@@ -14,11 +14,13 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.nwsweather.di.AppContainer
 import com.nwsweather.presentation.WeatherViewModel
 import com.nwsweather.presentation.WeatherViewModelFactory
+import com.nwsweather.sensor.MovementTracker
 import com.nwsweather.ui.screens.WeatherRoute
 import com.nwsweather.ui.theme.NwsWeatherTheme
 
 class MainActivity : ComponentActivity() {
     private val appContainer by lazy { AppContainer(this) }
+    private val movementTracker by lazy { MovementTracker(this) }
     private val viewModel: WeatherViewModel by viewModels {
         WeatherViewModelFactory(appContainer.weatherRepository)
     }
@@ -39,6 +41,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        requestCurrentLocation()
+
         setContent {
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
             NwsWeatherTheme(appTheme = uiState.theme) {
@@ -48,6 +52,17 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        movementTracker.start()
+        requestCurrentLocation()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        movementTracker.stop()
     }
 
     private fun requestCurrentLocation() {

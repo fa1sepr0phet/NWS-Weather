@@ -12,6 +12,7 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.nwsweather.di.AppContainer
+import com.nwsweather.sensor.MovementTracker
 import com.nwsweather.widget.WeatherAppWidget
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -23,6 +24,11 @@ class WidgetRefreshWorker(
 ) : CoroutineWorker(appContext, params) {
 
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
+        // Battery saving: Skip if stationary for 20+ mins
+        if (MovementTracker.isPhoneStationary(applicationContext, 20)) {
+            return@withContext Result.success()
+        }
+
         runCatching {
             val repository = AppContainer(applicationContext).weatherRepository
             repository.refreshLatestSnapshot()
@@ -38,7 +44,7 @@ class WidgetRefreshWorker(
         private const val IMMEDIATE_WORK_NAME = "weather_widget_immediate_refresh"
 
         fun schedulePeriodic(context: Context) {
-            val request = PeriodicWorkRequestBuilder<WidgetRefreshWorker>(30, TimeUnit.MINUTES)
+            val request = PeriodicWorkRequestBuilder<WidgetRefreshWorker>(20, TimeUnit.MINUTES)
                 .setConstraints(
                     Constraints.Builder()
                         .setRequiredNetworkType(NetworkType.CONNECTED)

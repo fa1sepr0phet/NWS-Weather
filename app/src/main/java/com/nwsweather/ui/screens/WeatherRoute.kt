@@ -21,6 +21,9 @@ fun WeatherRoute(
         onSavedLocationClick = viewModel::loadSavedLocation,
         onRefresh = viewModel::refreshForecast,
         onDismissError = viewModel::dismissError,
-        onUseCurrentLocation = onRequestCurrentLocation
+        onUseCurrentLocation = onRequestCurrentLocation,
+        onDeleteLocation = viewModel::deleteSavedLocation,
+        onEditLocation = viewModel::startEditingLocation,
+        onStopEditing = viewModel::stopEditingLocation
     )
 }

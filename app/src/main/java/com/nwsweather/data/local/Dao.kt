@@ -13,6 +13,9 @@ interface SavedLocationDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(entity: SavedLocationEntity)
+
+    @Query("DELETE FROM saved_locations WHERE id = :id")
+    suspend fun deleteById(id: Long)
 }
 
 @Dao

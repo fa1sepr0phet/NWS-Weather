@@ -44,8 +44,13 @@ class WeatherViewModel(
         launchLoad {
             repository.loadForecastForAddress(
                 address = query,
-                label = current.saveLabel.trim().ifBlank { null }
+                label = current.saveLabel.trim().ifBlank { null },
+                existingId = current.editingLocation?.id
             )
+        }
+        
+        if (current.editingLocation != null) {
+            stopEditingLocation()
         }
     }
 
@@ -81,6 +86,26 @@ class WeatherViewModel(
         }
     }
 
+    fun deleteSavedLocation(location: SavedLocationEntity) {
+        viewModelScope.launch {
+            repository.deleteSavedLocation(location)
+        }
+    }
+
+    fun startEditingLocation(location: SavedLocationEntity) {
+        _uiState.update {
+            it.copy(
+                editingLocation = location,
+                searchQuery = location.address,
+                saveLabel = location.label
+            )
+        }
+    }
+
+    fun stopEditingLocation() {
+        _uiState.update { it.copy(editingLocation = null, searchQuery = "", saveLabel = "") }
+    }
+
     private fun observeSavedLocations() {
         viewModelScope.launch {
             repository.observeSavedLocations().collect { locations ->
@@ -89,8 +114,8 @@ class WeatherViewModel(
         }
     }
 
-    private fun launchLoad(block: suspend () -> com.nwsweather.data.repository.ForecastLoadResult) {
-        viewModelScope.launch {
+    private fun launchLoad(block: suspend () -> com.nwsweather.data.repository.ForecastLoadResult): kotlinx.coroutines.Job {
+        return viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, errorMessage = null) }
             runCatching { block() }
                 .onSuccess { result ->

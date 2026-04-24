@@ -34,6 +34,10 @@ class WeatherRepository(
 ) {
     fun observeSavedLocations(): Flow<List<SavedLocationEntity>> = savedLocationDao.observeAll()
 
+    suspend fun deleteSavedLocation(location: SavedLocationEntity) {
+        savedLocationDao.deleteById(location.id)
+    }
+
     suspend fun getLatestSnapshot(): WeatherSnapshotEntity? = weatherSnapshotDao.getLatest()
 
     suspend fun refreshLatestSnapshot(): ForecastLoadResult? {
@@ -45,7 +49,7 @@ class WeatherRepository(
         )
     }
 
-    suspend fun loadForecastForAddress(address: String, label: String? = null): ForecastLoadResult = coroutineScope {
+    suspend fun loadForecastForAddress(address: String, label: String? = null, existingId: Long? = null): ForecastLoadResult = coroutineScope {
         val geocoder = Geocoder(appContext)
         val (latitude, longitude, matchedAddress) = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             suspendCoroutine { continuation ->
@@ -99,6 +103,7 @@ class WeatherRepository(
         if (!label.isNullOrBlank()) {
             savedLocationDao.insert(
                 SavedLocationEntity(
+                    id = existingId ?: 0L,
                     label = label,
                     address = matchedAddress,
                     latitude = latitude,

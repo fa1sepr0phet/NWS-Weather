@@ -1,5 +1,6 @@
 package com.nwsweather.ui.components
 
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -13,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import com.nwsweather.data.local.SavedLocationEntity
 
@@ -20,6 +22,7 @@ import com.nwsweather.data.local.SavedLocationEntity
 fun SavedLocationChips(
     locations: List<SavedLocationEntity>,
     onClick: (SavedLocationEntity) -> Unit,
+    onLongClick: (SavedLocationEntity) -> Unit = {},
     modifier: Modifier = Modifier,
     textColor: Color = MaterialTheme.colorScheme.onSecondaryContainer
 ) {
@@ -36,6 +39,11 @@ fun SavedLocationChips(
             AssistChip(
                 onClick = { onClick(location) },
                 label = { Text(location.label) },
+                modifier = Modifier.pointerInput(location) {
+                    detectTapGestures(
+                        onLongPress = { onLongClick(location) }
+                    )
+                },
                 colors = AssistChipDefaults.assistChipColors(
                     containerColor = MaterialTheme.colorScheme.secondaryContainer,
                     labelColor = textColor
