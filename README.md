@@ -25,7 +25,7 @@ The goal is straightforward:
 
 Weather is public information.
 
-Many modern weather platforms rely on ads, subscriptions, and user tracking. This project is a small step in the opposite direction—keeping weather simple, transparent, and accessible.
+Many modern weather platforms rely on ads, subscriptions, and user tracking. This project is a small step in the opposite direction by keeping weather simple, transparent, and accessible.
 
 - No ads  
 - No analytics or tracking  
