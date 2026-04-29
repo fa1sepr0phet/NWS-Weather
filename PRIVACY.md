@@ -59,6 +59,23 @@ Only the minimum data required to provide weather and location functionality is 
 
 ---
 
+---
+
+## Data Flow
+
+| Feature | Data involved | Where it goes | Stored? | Notes |
+|---|---|---|---|---|
+| Weather forecast lookup | Latitude/longitude or selected location | National Weather Service API | No remote storage by this app | Required to retrieve local forecast data |
+| Current device location | Device latitude/longitude | Used locally, then sent to NWS for forecast lookup | Not stored remotely | Location permission is optional and user-controlled |
+| Manual address search | Address/search text | Android Geocoder / system geocoding backend | Not stored unless saved as favorite | Backend may vary by Android device/OEM |
+| Saved locations | Location name and coordinates | Local device database via Room | Yes, locally only | Used for favorites and quick access |
+| Home screen widget | Selected/saved weather location and forecast data | NWS API during refresh | Locally cached as needed by Android/widget system | Used to update the widget |
+| Background updates | Saved/widget location | NWS API | No remote storage by this app | Uses WorkManager for scheduled refreshes |
+| App settings/preferences | User preferences | Local device only | Yes, locally only | Not transmitted externally |
+
+---
+
+
 ## Data Storage
 
 - Saved locations are stored locally on your device  
