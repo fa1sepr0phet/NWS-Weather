@@ -59,8 +59,6 @@ Only the minimum data required to provide weather and location functionality is 
 
 ---
 
----
-
 ## Data Flow
 
 | Feature | Data involved | Where it goes | Stored? | Notes |
