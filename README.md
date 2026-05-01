@@ -16,11 +16,7 @@ JustWeather exists for one reason: to show accurate weather without turning user
   <img src="images/kc2clean.png" width="30%" />
 </p>
 
-## Why JustWeather?
-
-Most weather apps are overloaded with ads, trackers, subscriptions, bloated web views, and data-hungry SDKs.
-
-JustWeather takes the opposite approach:
+## Ads and analytics can fuck right off
 
 - No advertising SDKs
 - No analytics SDKs
@@ -50,8 +46,6 @@ Just weather.
 ---
 
 ## Privacy
-
-JustWeather is designed with privacy as a core feature, not an afterthought.
 
 The app does not include advertising, analytics, or tracking SDKs. It does not require an account and does not sell, share, or monetize user data.
 
